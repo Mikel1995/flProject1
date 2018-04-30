@@ -6,12 +6,12 @@ import "rxjs/Rx";
 @Injectable()
 export class LoginProvider {
     constructor(public http: Http) {
-        
+
     }
 
     login(form: any){
         let myHeader = new Headers();
         myHeader.append("Content-Type", "application/json");
-        return this.http.post("http://10.7.2.45:8080/auth", form, {headers:myHeader});
+        return this.http.post("http://192.168.1.75:8080/auth", form, {headers:myHeader});
     }
 }

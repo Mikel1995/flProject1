@@ -1,26 +1,39 @@
 import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+import { Http, Headers } from "@angular/http";
 import "rxjs/Rx";
+import { Storage } from "@ionic/storage";
 
 
 @Injectable()
 export class MainProvider {
-    constructor(public http: Http) {
-        
+    constructor(public http: Http, public storage: Storage) {
+
     }
 
-    firstApiCall(){
-        return this.http.get("").map(res => res.json());
+    lock(){
+      let token = sessionStorage.getItem('token');
+      let myHeader = new Headers();
+        myHeader.append("Authorization", "Bearer "+token);
+        return this.http.get("http://192.168.1.75:8080/admin/lock", {headers:myHeader}).map(res => res.json());
     }
 
-    secondApiCall(){
-        return this.http.get("").map(res => res.json());
+    sleep(){
+      let token = sessionStorage.getItem('token');
+      let myHeader = new Headers();
+        myHeader.append("Authorization", "Bearer "+token);
+        return this.http.get("http://192.168.1.75:8080/admin/sleep", {headers:myHeader}).map(res => res.json());
     }
-    thirdApiCall(){
-        return this.http.get("").map(res => res.json());
+    shutdown(){
+      let token = sessionStorage.getItem('token');
+      let myHeader = new Headers();
+        myHeader.append("Authorization", "Bearer "+token);
+        return this.http.get("http://192.168.1.75:8080/admin/shutdown", {headers:myHeader}).map(res => res.json());
     }
     fourthApiCall(){
-        return this.http.get("").map(res => res.json());
+      let token = sessionStorage.getItem('token');
+      let myHeader = new Headers();
+        myHeader.append("Authorization", "Bearer "+token);
+        return this.http.get("http://192.168.1.75:8080/admin/lock", {headers:myHeader}).map(res => res.json());
     }
 
 }

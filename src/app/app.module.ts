@@ -1,4 +1,5 @@
 import { LoginProvider } from "../providers/loginProvider";
+import { MainProvider } from "../providers/mainProvider";
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -32,7 +33,8 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LoginProvider
+    LoginProvider,
+    MainProvider
   ]
 })
 export class AppModule {}

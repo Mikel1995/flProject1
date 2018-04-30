@@ -9,8 +9,23 @@ import { MainProvider } from './../../providers/mainProvider';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, ) {
+  constructor(public navCtrl: NavController, public mainProvider: MainProvider) {
 
   }
+
+  lockMethod(){
+    this.mainProvider.lock().subscribe()
+  }
+
+  sleepMethod(){
+    this.mainProvider.sleep().subscribe()
+  }
+
+
+  shutDownMethod(){
+    this.mainProvider.shutdown().subscribe(
+)
+  }
+
 
 }

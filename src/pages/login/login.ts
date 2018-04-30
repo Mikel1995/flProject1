@@ -3,25 +3,25 @@ import { NavController } from "ionic-angular";
 import { MainProvider } from "./../../providers/mainProvider";
 import { LoginProvider } from "./../../providers/loginProvider";
 import { HomePage } from "../home/home";
-import { Storage } from '@ionic/storage';
 @Component({
   selector: "page-login",
   templateUrl: "login.html"
 })
 export class LogIn {
   form = {};
+  response: any;
 
   constructor(
     public loginProvider: LoginProvider,
-    public navCtrl: NavController,
-    private storage: Storage
+    public navCtrl: NavController
   ) {}
 
   loginExec() {
     this.loginProvider.login(this.form).subscribe(
       data => {
+        this.response = data;
+        sessionStorage.setItem('token', this.response._body);
       this.navCtrl.push(HomePage)
-      this.storage.set('token', data._body );
       },error => {
         console.log('error: ', error);
       }
