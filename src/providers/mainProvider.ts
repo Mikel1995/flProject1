@@ -14,26 +14,29 @@ export class MainProvider {
       let token = sessionStorage.getItem('token');
       let myHeader = new Headers();
         myHeader.append("Authorization", "Bearer "+token);
-        return this.http.get("http://192.168.1.75:8080/admin/lock", {headers:myHeader}).map(res => res.json());
+        return this.http.get("http://localhost:8080/admin/lock", {headers:myHeader}).map(res => res.json());
     }
 
     sleep(){
       let token = sessionStorage.getItem('token');
       let myHeader = new Headers();
         myHeader.append("Authorization", "Bearer "+token);
-        return this.http.get("http://192.168.1.75:8080/admin/sleep", {headers:myHeader}).map(res => res.json());
+        return this.http.get("http://localhost:8080/admin/sleep", {headers:myHeader}).map(res => res.json());
     }
     shutdown(){
       let token = sessionStorage.getItem('token');
       let myHeader = new Headers();
         myHeader.append("Authorization", "Bearer "+token);
-        return this.http.get("http://192.168.1.75:8080/admin/shutdown", {headers:myHeader}).map(res => res.json());
+        return this.http.get("http://localhost:8080/admin/shutdown", {headers:myHeader}).map(res => res.json());
     }
     fourthApiCall(){
       let token = sessionStorage.getItem('token');
       let myHeader = new Headers();
         myHeader.append("Authorization", "Bearer "+token);
-        return this.http.get("http://192.168.1.75:8080/admin/lock", {headers:myHeader}).map(res => res.json());
+        return this.http.get("http://localhost:8080/admin/lock", {headers:myHeader}).map(res => res.json());
+    }
+    logOut(){
+      sessionStorage.removeItem('token');
     }
 
 }

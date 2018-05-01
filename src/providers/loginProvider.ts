@@ -12,6 +12,6 @@ export class LoginProvider {
     login(form: any){
         let myHeader = new Headers();
         myHeader.append("Content-Type", "application/json");
-        return this.http.post("http://192.168.1.75:8080/auth", form, {headers:myHeader});
+        return this.http.post("http://localhost:8080/auth", form, {headers:myHeader});
     }
 }

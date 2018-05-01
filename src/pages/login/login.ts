@@ -3,6 +3,8 @@ import { NavController } from "ionic-angular";
 import { MainProvider } from "./../../providers/mainProvider";
 import { LoginProvider } from "./../../providers/loginProvider";
 import { HomePage } from "../home/home";
+import { ToastController } from 'ionic-angular';
+
 @Component({
   selector: "page-login",
   templateUrl: "login.html"
@@ -13,7 +15,8 @@ export class LogIn {
 
   constructor(
     public loginProvider: LoginProvider,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private toastCtrl: ToastController
   ) {}
 
   loginExec() {
@@ -23,9 +26,19 @@ export class LogIn {
         sessionStorage.setItem('token', this.response._body);
       this.navCtrl.push(HomePage)
       },error => {
+        this.presentToast();
         console.log('error: ', error);
       }
     )
     console.log(this.form);
   }
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Wrong Credentials',
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
+}
+
 }
